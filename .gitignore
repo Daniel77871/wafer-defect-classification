@@ -1,7 +1,25 @@
-data/
-results/
 .venv/
 .pytest_cache/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+.DS_Store
+
+# Keep raw/derived dataset arrays out of Git.
+# WM-811K is a large Kaggle dataset, and processed npz files are reproducible.
+data/raw/
+data/processed/*.npz
+data/processed/*.pkl
+data/.DS_Store
+
+# Track small, reproducibility-relevant data metadata.
+!data/processed/label_mapping.json
+!data/splits/
+!data/splits/*.csv
+
+# Track report-facing results, but ignore reproducible binary model artifacts.
+results/**/best_model.pt
+results/**/svm_model.pkl
+results/**/test_predictions.npz
+results/.DS_Store
+results/**/.DS_Store
