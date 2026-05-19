@@ -1,0 +1,22 @@
+# Experiment D changes the loss only: CE -> focal loss.
+# This tests whether down-weighting easy majority examples improves minority recall.
+exp_name: exp_D_focal_loss
+model:
+  type: cnn_scratch
+  backbone: null
+  pretrained: null
+  in_channels: 3
+data:
+  encoding: onehot
+  use_augmentation: false
+loss:
+  type: focal
+  focal_gamma: 2.0
+sampler:
+  type: standard
+training:
+  batch_size: 128
+  n_epochs: 50
+  lr: 0.001
+  patience: 10
+seed: 42

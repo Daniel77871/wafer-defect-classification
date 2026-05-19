@@ -1,0 +1,23 @@
+# Experiment F changes model family and representation: CNN pixels -> handcrafted SVM.
+# This provides an interpretable classical baseline against the neural experiments.
+exp_name: exp_F_svm
+model:
+  type: svm
+  backbone: null
+  pretrained: null
+  in_channels: null
+data:
+  encoding: handcrafted
+  use_augmentation: false
+  raw_path: data/raw/LSWMD.pkl
+loss:
+  type: null
+  focal_gamma: 2.0
+sampler:
+  type: standard
+training:
+  batch_size: 128
+  n_epochs: 1
+  lr: 0.001
+  patience: 10
+seed: 42

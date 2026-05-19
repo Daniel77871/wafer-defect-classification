@@ -1,0 +1,23 @@
+# Experiment B changes the model family only: scratch CNN -> pretrained MobileNetV3.
+# Data encoding, loss, sampler, augmentation, and training hyperparameters match A.
+exp_name: exp_B_transfer
+model:
+  type: transfer
+  backbone: mobilenetv3_small_100
+  pretrained: true
+  in_channels: 3
+  freeze_backbone: false
+data:
+  encoding: onehot
+  use_augmentation: false
+loss:
+  type: ce
+  focal_gamma: 2.0
+sampler:
+  type: standard
+training:
+  batch_size: 128
+  n_epochs: 50
+  lr: 0.001
+  patience: 10
+seed: 42

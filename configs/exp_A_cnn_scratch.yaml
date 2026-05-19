@@ -1,0 +1,22 @@
+# Experiment A: baseline CNN trained from scratch.
+# Reference setting for comparisons: onehot input, CE loss, standard sampling, no augmentation.
+exp_name: exp_A_cnn_scratch
+model:
+  type: cnn_scratch
+  backbone: null
+  pretrained: null
+  in_channels: 3
+data:
+  encoding: onehot
+  use_augmentation: false
+loss:
+  type: ce
+  focal_gamma: 2.0
+sampler:
+  type: standard
+training:
+  batch_size: 128
+  n_epochs: 50
+  lr: 0.001
+  patience: 10
+seed: 42

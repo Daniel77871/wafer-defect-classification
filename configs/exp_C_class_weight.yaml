@@ -1,0 +1,22 @@
+# Experiment C changes the loss only: CE -> class-weighted CE.
+# This isolates whether inverse-frequency loss weighting helps minority classes.
+exp_name: exp_C_class_weight
+model:
+  type: cnn_scratch
+  backbone: null
+  pretrained: null
+  in_channels: 3
+data:
+  encoding: onehot
+  use_augmentation: false
+loss:
+  type: weighted_ce
+  focal_gamma: 2.0
+sampler:
+  type: standard
+training:
+  batch_size: 128
+  n_epochs: 50
+  lr: 0.001
+  patience: 10
+seed: 42

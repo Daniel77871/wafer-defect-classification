@@ -1,0 +1,22 @@
+# Experiment E changes augmentation only: no augmentation -> wafer-valid flips/rotations.
+# All model, data, loss, sampler, and optimizer settings match A.
+exp_name: exp_E_augmentation
+model:
+  type: cnn_scratch
+  backbone: null
+  pretrained: null
+  in_channels: 3
+data:
+  encoding: onehot
+  use_augmentation: true
+loss:
+  type: ce
+  focal_gamma: 2.0
+sampler:
+  type: standard
+training:
+  batch_size: 128
+  n_epochs: 50
+  lr: 0.001
+  patience: 10
+seed: 42
